@@ -3,7 +3,10 @@ export default {
   content: [
     "./index.html",
     "./src/pages/index.jsx",
-    "./src/pages/accueil.jsx",
+    "./src/composants/Navbar.jsx",
+    "./src/pages/accueil/accueil.jsx",
+    "./src/pages/accueil/medecins.jsx",
+    "./src/pages/accueil/rapport.jsx",
   ],
   theme: {
     extend: {},
