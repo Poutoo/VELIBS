@@ -4,7 +4,7 @@ import '../index.css';
 import Navbar from '/home/administrateur/vs/React/GSB Project/GSB/src/composants/Navbar.jsx';
 import { AuthContext } from '/home/administrateur/vs/React/GSB Project/GSB/src/context/AuthContext.jsx';
 import { Outlet } from 'react-router-dom';
-import useDarkMode from '/home/administrateur/vs/React/GSB Project/GSB/src/hooks/useDarkMode'; // Assurez-vous que le chemin est correct
+import useDarkMode from '/home/administrateur/vs/React/GSB Project/GSB/src/hooks/useDarkMode';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 
@@ -16,7 +16,7 @@ function Accueil() {
   const login = location.state.login;*/
 
   return (
-    <div className={`min-h-screen bg-gray-50 dark:bg-gray-900`}>
+    <div className={`min-h-screen bg-stone-100 dark:bg-zinc-900`}>
       <Navbar />
       <div className="flex justify-end p-4">
         <button onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} className="text-gray-500 dark:text-gray-300">

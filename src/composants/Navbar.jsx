@@ -27,16 +27,20 @@ export default function Example() {
   };
 
   return (
-    <Disclosure as="nav" className="bg-sky-700">
-      <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+    <Disclosure as="nav" className="relative">
+      <div className="absolute inset-0">
+        <img src="jinx-banner.png" alt="Background Banner" className="w-full h-full object-cover opacity-50" />
+        <div className="absolute inset-0 bg-sky-700 bg-opacity-50"></div>
+      </div>
+      <div className="relative mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
             {/* Mobile menu button */}
             <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
               <span className="absolute -inset-0.5" />
               <span className="sr-only">Open main menu</span>
-              <Bars3Icon aria-hidden="true" className="block size-6 group-data-[open]:hidden" />
-              <XMarkIcon aria-hidden="true" className="hidden size-6 group-data-[open]:block" />
+              <Bars3Icon aria-hidden="true" className="block h-6 w-6 group-data-[open]:hidden" />
+              <XMarkIcon aria-hidden="true" className="hidden h-6 w-6 group-data-[open]:block" />
             </DisclosureButton>
           </div>
           <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
@@ -72,7 +76,7 @@ export default function Example() {
             >
               <span className="absolute -inset-1.5" />
               <span className="sr-only">View notifications</span>
-              <BellIcon aria-hidden="true" className="size-6" />
+              <BellIcon aria-hidden="true" className="h-6 w-6" />
             </button>
 
             {/* Profile dropdown */}
@@ -82,9 +86,9 @@ export default function Example() {
                   <span className="absolute -inset-1.5" />
                   <span className="sr-only">Open user menu</span>
                   <img
-                    alt=""
-                    src="user.png"
-                    className="size-8 rounded-full"
+                    alt="User profile"
+                    src="jinx.jpg"
+                    className="h-8 w-8 rounded-full"
                   />
                 </MenuButton>
               </div>

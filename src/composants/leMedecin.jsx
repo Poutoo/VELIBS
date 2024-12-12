@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import 'tailwindcss/tailwind.css'; // Assurez-vous d'importer Tailwind CSS
+import 'tailwindcss/tailwind.css'; 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons'; // Importer l'icône de loupe
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import SecondNav from './secondNavbar';
+import FicheMedecin from './ficheMedecin';
 
 export default function Medecin() {
     const navigate = useNavigate();
@@ -10,7 +12,7 @@ export default function Medecin() {
     const [listeVisible, setListeVisible] = useState(false);
     const [nomMedecin, setNomMedecin] = useState('');
     const [listeMedecins, setListeMedecins] = useState([]);
-    const [medecin, setMedecin] = useState({});
+    const [medecin, setMedecin] = useState();
 
     function charger(event) {
         const nom = event.target.value;
@@ -54,7 +56,7 @@ export default function Medecin() {
                     value={nomMedecin}
                     onChange={charger}
                     placeholder="Recherche de médecin"
-                    className="w-full p-2 pl-10 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="bg-zinc-100 dark:bg-zinc-700 w-full p-2 pl-10 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
             </div>
 
@@ -64,22 +66,29 @@ export default function Medecin() {
                         <li 
                             key={medecin.id} 
                             onClick={() => selectMedecin(medecin)} 
-                            className="p-2 cursor-pointer hover:bg-gray-100">
+                            className="bg-zinc-100 dark:bg-zinc-700 p-2 cursor-pointer hover:bg-gray-100">
                             {medecin.nom} {medecin.prenom}
                         </li>
                     ))}
                 </ul>
             )}
+            
 
-            {medecin.nom && (
-                <div className="mt-4 p-4 border border-gray-300 rounded-md shadow-md">
+            {medecin && (
+                <>
+                 {/*<div className="mt-4 p-4 border border-gray-300 rounded-md shadow-md">
                     <h3 className="text-lg font-semibold">Détails du Médecin</h3>
                     <p><strong>Nom :</strong> {medecin.nom} {medecin.prenom}</p>
                     <p><strong>Spécialité :</strong> {medecin.specialitecomplementaire}</p>
                     <p><strong>Adresse :</strong> {medecin.adresse}</p>
-                    <p><strong>Téléphone :</strong> {medecin.tel}</p>
-                </div>
+                    <p><strong>Téléphone :</strong> {medecin.tel}</p>*/}
+
+                <SecondNav medecin={medecin} />
+                <FicheMedecin medecin={medecin} /> </>
+               
             )}
-        </div>
-    );
-}
+       </div> 
+       );
+        
+    }
+

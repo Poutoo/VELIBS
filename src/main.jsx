@@ -7,7 +7,7 @@ import Rapports from './pages/accueil/rapports.jsx';
 import './pages/index.css';
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { AuthProvider } from '/home/administrateur/vs/React/GSB Project/GSB/src/context/AuthContext.jsx'; // Importez AuthProvider
+import { AuthProvider } from '/home/administrateur/vs/React/GSB Project/GSB/src/context/AuthContext.jsx';
 
 const router = createBrowserRouter([
   {

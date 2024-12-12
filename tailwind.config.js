@@ -4,6 +4,7 @@ export default {
     "./index.html",
     "./src/pages/index.jsx",
     "./src/composants/Navbar.jsx",
+    "./src/composants/secondNavbar.jsx",
     "./src/pages/accueil/accueil.jsx",
     "./src/pages/accueil/medecins.jsx",
     "./src/pages/accueil/rapport.jsx",
