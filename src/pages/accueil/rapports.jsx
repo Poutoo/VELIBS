@@ -5,7 +5,7 @@ const Rapports = () => {
   const { visiteur } = useContext(AuthContext);
 
   return (
-    <div>
+    <div className="text-gray-500 dark:text-gray-300">
       <h1>Pages des rapports</h1>
       {visiteur ? (
         <div>

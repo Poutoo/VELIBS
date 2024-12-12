@@ -1,4 +1,12 @@
+/* index.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Optionnel : personnalisation des couleurs pour le dark mode */
+@layer components {
+  .dark-mode {
+    --tw-bg-opacity: 1;
+    background-color: rgba(17, 24, 39, var(--tw-bg-opacity)); /* Exemple de personnalisation */
+  }
+}

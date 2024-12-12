@@ -48,7 +48,6 @@ export default function Medecin() {
         <div className="p-4 max-w-lg mx-auto">
             <div className="relative">
                 <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                    <FontAwesomeIcon icon={faSearch} className="text-gray-400" />
                 </div>
                 <input
                     type="text"
@@ -66,7 +65,7 @@ export default function Medecin() {
                             key={medecin.id} 
                             onClick={() => selectMedecin(medecin)} 
                             className="p-2 cursor-pointer hover:bg-gray-100">
-                            {medecin.nom}
+                            {medecin.nom} {medecin.prenom}
                         </li>
                     ))}
                 </ul>
@@ -75,10 +74,10 @@ export default function Medecin() {
             {medecin.nom && (
                 <div className="mt-4 p-4 border border-gray-300 rounded-md shadow-md">
                     <h3 className="text-lg font-semibold">Détails du Médecin</h3>
-                    <p><strong>Nom :</strong> {medecin.nom}</p>
-                    <p><strong>Spécialité :</strong> {medecin.specialite}</p>
+                    <p><strong>Nom :</strong> {medecin.nom} {medecin.prenom}</p>
+                    <p><strong>Spécialité :</strong> {medecin.specialitecomplementaire}</p>
                     <p><strong>Adresse :</strong> {medecin.adresse}</p>
-                    <p><strong>Téléphone :</strong> {medecin.telephone}</p>
+                    <p><strong>Téléphone :</strong> {medecin.tel}</p>
                 </div>
             )}
         </div>
