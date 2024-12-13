@@ -1,10 +1,9 @@
 import React, { useContext } from 'react';
-import { useLocation } from 'react-router-dom';
 import '../index.css';
-import Navbar from '/home/administrateur/vs/React/GSB Project/GSB/src/composants/Navbar.jsx';
-import { AuthContext } from '/home/administrateur/vs/React/GSB Project/GSB/src/context/AuthContext.jsx';
+import Navbar from '/src/composants/Navbar.jsx';
+import { AuthContext } from '/src/context/AuthContext.jsx';
 import { Outlet } from 'react-router-dom';
-import useDarkMode from '/home/administrateur/vs/React/GSB Project/GSB/src/hooks/useDarkMode';
+import useDarkMode from '/src/hooks/useDarkMode';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 

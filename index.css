@@ -724,6 +724,30 @@ video {
   color: rgb(107 114 128 / var(--tw-text-opacity));
 }
 
+.file-input {
+  display: block;
+  width: 100%;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #444;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.file-input:hover {
+  border-color: #ccc;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.file-input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  outline: none;
+}
+
+
 .text-gray-900 {
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity));
@@ -868,3 +892,5 @@ video {
     --tw-ring-color: rgb(59 130 246 / var(--tw-ring-opacity));
   }
 }
+
+

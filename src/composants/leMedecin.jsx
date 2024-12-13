@@ -1,18 +1,17 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import 'tailwindcss/tailwind.css'; 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import SecondNav from './secondNavbar';
-import FicheMedecin from './ficheMedecin';
+import { Outlet } from 'react-router-dom';
 
 export default function Medecin() {
     const navigate = useNavigate();
 
+    const [version, setVersion] = useState('');
     const [listeVisible, setListeVisible] = useState(false);
     const [nomMedecin, setNomMedecin] = useState('');
     const [listeMedecins, setListeMedecins] = useState([]);
-    const [medecin, setMedecin] = useState();
+    const [medecin, setMedecin] = useState(null);
 
     function charger(event) {
         const nom = event.target.value;
@@ -29,6 +28,8 @@ export default function Medecin() {
     function selectMedecin(leMedecin) {
         setMedecin(leMedecin);
         setListeVisible(false);
+        setVersion(version + 1);
+        navigate('' + leMedecin.id);
     }
 
     async function rechercherRapports(nom) {
@@ -73,22 +74,12 @@ export default function Medecin() {
                 </ul>
             )}
             
-
             {medecin && (
                 <>
-                 {/*<div className="mt-4 p-4 border border-gray-300 rounded-md shadow-md">
-                    <h3 className="text-lg font-semibold">Détails du Médecin</h3>
-                    <p><strong>Nom :</strong> {medecin.nom} {medecin.prenom}</p>
-                    <p><strong>Spécialité :</strong> {medecin.specialitecomplementaire}</p>
-                    <p><strong>Adresse :</strong> {medecin.adresse}</p>
-                    <p><strong>Téléphone :</strong> {medecin.tel}</p>*/}
-
-                <SecondNav medecin={medecin} />
-                <FicheMedecin medecin={medecin} /> </>
-               
+                    <SecondNav medecin={medecin} />
+                    <Outlet context={[medecin, setMedecin]} key={version} />
+                </>
             )}
-       </div> 
-       );
-        
-    }
-
+        </div>
+    );
+}

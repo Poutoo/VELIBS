@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { AuthContext } from '/home/administrateur/vs/React/GSB Project/GSB/src/context/AuthContext.jsx';
+import { AuthContext } from '/src/context/AuthContext.jsx';
 
 const Rapports = () => {
   const { visiteur } = useContext(AuthContext);

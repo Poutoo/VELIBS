@@ -1,6 +1,6 @@
-import { useLocation } from 'react-router-dom';
 import '../index.css'
 import Medecin from '../../composants/leMedecin';
+
 
 function Medecins() {
 

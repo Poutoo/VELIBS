@@ -8,6 +8,8 @@ export default {
     "./src/pages/accueil/accueil.jsx",
     "./src/pages/accueil/medecins.jsx",
     "./src/pages/accueil/rapport.jsx",
+    "./src/pages/accueil/profile.jsx",
+
   ],
   theme: {
     extend: {},

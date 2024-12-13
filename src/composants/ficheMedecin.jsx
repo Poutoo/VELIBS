@@ -1,7 +1,11 @@
 import React from 'react';
+import { useOutletContext } from 'react-router-dom';
 
-const FicheMedecin = ({ medecin }) => {
+const FicheMedecin = () => {
+    const [medecin] = useOutletContext();
+
     return (
+        
         <div className="bg-gray-200 dark:bg-zinc-800 p-4 rounded-md shadow-md">
             <h2 className="text-lg font-semibold mb-4">Fiche du Médecin</h2>
             <form>
