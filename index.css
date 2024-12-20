@@ -893,4 +893,12 @@ video {
   }
 }
 
+.text-success { 
+  color: #38a169; /* Vert */ 
+} 
+
+.text-error { 
+  color: #e53e3e; /* Rouge */ 
+}
+
 

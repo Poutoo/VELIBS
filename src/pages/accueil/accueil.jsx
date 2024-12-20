@@ -22,9 +22,9 @@ function Accueil() {
           {theme === 'dark' ? <FontAwesomeIcon icon={faSun} /> : <FontAwesomeIcon icon={faMoon} />}
         </button>
       </div>
-      <h1 className="text-center text-2xl font-semibold text-gray-900 dark:text-white">
+      {/*<h1 className="text-center text-2xl font-semibold text-gray-900 dark:text-white">
         Hi, {visiteur ? `${visiteur.nom} ${visiteur.prenom}` : 'x'}!
-      </h1>
+      </h1>*/}
       <Outlet />
     </div>
   );

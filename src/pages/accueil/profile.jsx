@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import { useProfile } from '../../context/ProfileContext'; // Assurez-vous du chemin correct
 import '../index.css';
+import { useContext } from 'react';
+import { AuthContext } from '../../context/AuthContext';
 
 export default function Profile() {
   const { profileImage, updateProfileImage } = useProfile();
   const [tempImage, setTempImage] = useState(null);
+  const { visiteur } = useContext(AuthContext); // Utiliser le contexte pour obtenir visiteur et logout
+
 
   const handleImageChange = (event) => {
     if (event.target.files && event.target.files[0]) {
@@ -19,7 +23,9 @@ export default function Profile() {
 
   return (
     <div className="p-6 max-w-lg mx-auto rounded-lg shadow-lg bg-gray-200 dark:bg-zinc-800">
-      <h1 className="text-3xl font-bold mb-6 text-gray-700 dark:text-white">Profile</h1>
+      <h1 className="text-3xl text-center font-bold mb-6 text-gray-700 dark:text-white">
+            {visiteur.nom && visiteur.prenom ?  `${visiteur.nom} ${visiteur.prenom}` : 'aaaaa'}
+      </h1>
       <div className="flex flex-col items-center">
         <img 
           src={tempImage || profileImage} 

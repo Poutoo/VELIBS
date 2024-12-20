@@ -10,3 +10,12 @@
     background-color: rgba(17, 24, 39, var(--tw-bg-opacity)); /* Exemple de personnalisation */
   }
 }
+
+.text-success {
+  color: #33d37e; /* Vert */
+}
+
+.text-error {
+  color: #ec2727; /* Rouge */
+}
+
