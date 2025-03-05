@@ -11,6 +11,7 @@ import './pages/index.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { AuthProvider } from '/src/context/AuthContext.jsx';
 import { ProfileProvider } from './context/ProfileContext'; // Importer ProfileProvider
+import ListeRapports from './composants/listeRapports.jsx';
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,32 @@ const router = createBrowserRouter([
       {
         path: 'rapports',
         element: <Rapports />,
+        children: [
+          {
+            path: ':id',
+            element: <ListeRapports/>
+          },
+          {
+            path: 'ajouter',
+            element: <ListeRapports/>,
+            children: [
+              {
+                path: ':id',
+                element: <ListeRapports/>
+              },
+            ]
+          },
+          {
+            path: 'modifier',
+            element: <ListeRapports/>,
+            children: [
+              {
+                path: ':id',
+                element: <ListeRapports/>
+              },
+            ]
+          }
+        ]
       },
       {
         path: 'profile', // Ajouter la route pour le profil

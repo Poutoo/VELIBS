@@ -9,6 +9,7 @@ function Rapports() {
         <div className="text-gray-500 dark:text-gray-300">
             <br />
             <h1 className='text-center'>Page des rapports</h1>
+            <br />
             <ListeRapports />
         </div>
         </>
