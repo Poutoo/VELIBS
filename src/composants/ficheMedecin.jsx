@@ -54,7 +54,7 @@ function Fiche({ leMedecin }) {
     }
     
     return (
-        <div className="p-6 max-w-lg mx-auto bg-grey-100 dark:bg-zinc-800 rounded-lg shadow-lg">
+        <div className="p-6 max-w-lg mx-auto bg-gray-200 dark:bg-zinc-800 rounded-lg shadow-lg">
             <h1 className="text-3xl font-bold mb-6 text-gray-700 dark:text-white text-center">
                 Fiche Formulaire
             </h1>
@@ -115,9 +115,8 @@ function Fiche({ leMedecin }) {
                     className="bg-rose-500 text-gray-100 px-4 py-2 rounded-md shadow-lg transform hover:scale-105 transition-transform duration-200" > 
                     Enregistrer les modifications 
                 </button>
-                
                 {updateMedecinSucces === true && (
-                    <p className="mt-4 text-success">Mise à jour réussie!</p>
+                    <p className="mt-4 alert-success">Mise à jour réussie!</p>
                 )} 
                 {updateMedecinSucces === false && (
                     <p className="mt-4 text-error ">Erreur lors de la mise à jour.</p>

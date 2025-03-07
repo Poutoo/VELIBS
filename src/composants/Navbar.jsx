@@ -7,10 +7,9 @@ import { AuthContext } from '/home/administrateur/vs/React/GSB Project/GSB/src/c
 import { useProfile } from '../context/ProfileContext';
 
 const navigation = [
-  { name: 'Dashboard', href: '#', current: true },
+  { name: 'Accueil', href: '/accueil', current: true },
   { name: 'Rapports', href: '/accueil/rapports', current: false },
   { name: 'Medecins', href: '/accueil/medecins', current: false },
-  { name: 'Calendar', href: '#', current: false },
 ];
 
 function classNames(...classes) {
