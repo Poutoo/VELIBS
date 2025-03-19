@@ -3,7 +3,7 @@ import React, { createContext, useState, useContext } from 'react';
 const ProfileContext = createContext();
 
 export function ProfileProvider({ children }) {
-  const [profileImage, setProfileImage] = useState(localStorage.getItem('profileImage') || 'jinx.jpg');
+  const [profileImage, setProfileImage] = useState(localStorage.getItem('profileImage') || 'jinx-pdp-2.gif');
 
   const updateProfileImage = (newImage) => {
     setProfileImage(newImage);

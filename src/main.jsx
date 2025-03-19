@@ -11,6 +11,7 @@ import './pages/index.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { AuthProvider } from '/src/context/AuthContext.jsx';
 import { ProfileProvider } from './context/ProfileContext'; // Importer ProfileProvider
+import { BannerProvider, useBanner } from './context/BannerContext.jsx';
 import ListeRapports from './composants/listeRapports.jsx';
 
 const router = createBrowserRouter([
@@ -74,7 +75,9 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <AuthProvider> {/* Enveloppez votre application avec AuthProvider */}
       <ProfileProvider>
-        <RouterProvider router={router} />
+        <BannerProvider>
+          <RouterProvider router={router} />
+        </BannerProvider>
       </ProfileProvider>
     </AuthProvider>
   </StrictMode>

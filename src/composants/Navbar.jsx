@@ -3,8 +3,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import '/home/administrateur/vs/React/GSB Project/GSB/src/pages/index.css';
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser, faGear, faRightFromBracket} from '@fortawesome/free-solid-svg-icons';
 import { AuthContext } from '/home/administrateur/vs/React/GSB Project/GSB/src/context/AuthContext.jsx'; // Assurez-vous du chemin correct
 import { useProfile } from '../context/ProfileContext';
+import { useBanner } from '../context/BannerContext';
 
 const navigation = [
   { name: 'Accueil', href: '/accueil', current: true },
@@ -19,6 +22,7 @@ function classNames(...classes) {
 export default function Example() {
   const { visiteur, logout } = useContext(AuthContext); // Utiliser le contexte pour obtenir visiteur et logout
   const { profileImage } = useProfile('jinx.jpg'); // Utiliser le contexte pour obtenir l'image de profil
+  const { bannerImage } = useBanner('banner-1.gif');
   const navigate = useNavigate(); // Utiliser useNavigate pour la navigation
 
   const handleLogout = () => {
@@ -30,7 +34,7 @@ export default function Example() {
   return (
     <Disclosure as="nav" className="relative bg-sky-700">
       <div className="absolute inset-0">
-        <img src="jinx-5.gif" alt="Animated Background" className="w-full h-full object-cover" />
+        <img src={bannerImage} alt="Animated Background" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-sky-700 bg-opacity-60 "></div>
       </div>
       <div className="relative mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -104,6 +108,7 @@ export default function Example() {
                       to="/accueil/profile" // Rediriger vers la page de profil
                       className={classNames(active ? 'bg-gray-100 dark:bg-zinc-900' : '', 'block px-4 py-2 text-sm text-gray-700  dark:text-white')}
                     >
+                      <FontAwesomeIcon icon={faUser} style={{ marginRight: '9px' }}/>
                       Profile
                     </Link>
                   )}
@@ -114,6 +119,7 @@ export default function Example() {
                       to="#"
                       className={classNames(active ? 'bg-gray-100 dark:bg-zinc-900' : '', 'block px-4 py-2 text-sm text-gray-700 dark:text-white')}
                     > 
+                      <FontAwesomeIcon icon={faGear} style={{ marginRight: '9px' }}/>
                       Settings
                     </Link>
                   )}
@@ -124,6 +130,7 @@ export default function Example() {
                       onClick={handleLogout}
                       className={classNames(active ? 'bg-gray-100 dark:bg-zinc-900' : '', 'block w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-white')}
                     >
+                      <FontAwesomeIcon icon={faRightFromBracket} style={{ marginRight: '9px' }}/>
                       Logout
                     </button>
                   )}
