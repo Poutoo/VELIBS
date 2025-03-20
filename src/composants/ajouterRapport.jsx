@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import api from '../api/api';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFloppyDisk } from '@fortawesome/free-solid-svg-icons';
 
 const AjouterRapport = ({ visiteur, medecin, onRapportAjoute }) => {
     const [motif, setMotif] = useState('');
@@ -43,7 +45,7 @@ const AjouterRapport = ({ visiteur, medecin, onRapportAjoute }) => {
         console.log('Données envoyées à l\'API :', params);
 
         try {
-            const response = await axios.put('http://172.16.61.61/restGSB/ajouterRapport', params);
+            const response = await api.put('/ajouterRapport', params);
             if (response.status === 200) {
                 setMessageType('success');
                 setMessage("Rapport ajouté avec succès !");
@@ -100,6 +102,7 @@ const AjouterRapport = ({ visiteur, medecin, onRapportAjoute }) => {
                     ></textarea>
                 </div>
                 <button type="submit" className="bg-green-500 text-white px-4 py-2 rounded-md shadow-md hover:bg-green-600">
+                    <FontAwesomeIcon icon={faFloppyDisk} style={{ marginRight: '9px' }} />
                     Enregistrer le rapport
                 </button>
             </form>

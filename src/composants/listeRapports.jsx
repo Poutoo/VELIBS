@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus, faEdit, faUserDoctor } from '@fortawesome/free-solid-svg-icons';
 import AjouterRapport from './ajouterRapport';
+import ModifierRapport from './modifierRapport';
 
 export default function ListeRapports() {
     const [affichage, setAffichage] = useState('ajouter');
@@ -7,11 +10,13 @@ export default function ListeRapports() {
     const [listeMedecins, setListeMedecins] = useState([]);
     const [medecin, setMedecin] = useState(null);
     const [listeVisible, setListeVisible] = useState(false);
-    const [dateRecherche, setDateRecherche] = useState(''); // Nouvel état pour la date
-    const [rapport, setRapport] = useState(null); // Rapport récupéré
+    const [dateRecherche, setDateRecherche] = useState(''); // Date sélectionnée
+    const [listeRapports, setListeRapports] = useState([]); // Liste des rapports récupérés
+    const [message, setMessage] = useState(''); // Message d'état (succès ou erreur)
+    const [messageType, setMessageType] = useState(''); // 'success' ou 'error'
 
     const visiteur = {
-        id: 'a131', // TEST
+        id: 'a131', // Exemple d'ID visiteur
     };
 
     // Fonction pour rechercher des médecins par nom
@@ -23,33 +28,18 @@ export default function ListeRapports() {
                 setListeMedecins(data);
                 setListeVisible(true);
             } else {
-                console.error("Erreur lors de la récupération des médecins");
+                console.error('Erreur lors de la récupération des médecins');
             }
         } catch (error) {
-            console.error("Erreur de connexion à l'API", error);
+            console.error('Erreur de connexion à l\'API', error);
         }
     };
+    
 
-    // Fonction de recherche par date
-    const rechercherRapportParDate = async (date) => {
-        try {
-            const response = await fetch(`http://172.16.61.61/restGSB/rapport?date=${date}`);
-            if (response.ok) {
-                const data = await response.json();
-                setRapport(data);
-            } else {
-                console.error("Erreur lors de la récupération du rapport");
-            }
-        } catch (error) {
-            console.error("Erreur de connexion à l'API", error);
-        }
-    };
-
-    // Fonction appelée lorsqu'une date est sélectionnée
     const handleDateChange = (event) => {
         const selectedDate = event.target.value;
         setDateRecherche(selectedDate);
-        rechercherRapportParDate(selectedDate);
+        rechercherRapports(selectedDate); // Lancer la recherche des rapports
     };
 
     const charger = (event) => {
@@ -68,25 +58,36 @@ export default function ListeRapports() {
         setMedecin(medecin);
         setListeVisible(false);
     };
-    
+
     return (
         <div className="flex flex-col items-center justify-center bg-gray-100 dark:bg-zinc-900">
+            {/* Barre de navigation */}
             <div className="flex justify-center items-center space-x-6 mb-8">
                 <button
-                    className={`px-4 py-2 rounded-md shadow-md ${affichage === 'ajouter' ? 'bg-blue-500 text-white ' : 'bg-gray-200 hover:bg-gray-300 dark:bg-zinc-800 dark:text-white'} ml-4`}
+                    className={`flex items-center px-4 py-2 rounded-md shadow-md ${
+                        affichage === 'ajouter'
+                            ? 'bg-blue-500 text-white'
+                            : 'bg-gray-200 hover:bg-gray-300 dark:bg-zinc-800 dark:text-white'
+                    } ml-4`}
                     onClick={() => setAffichage('ajouter')}
                 >
+                    <FontAwesomeIcon icon={faPlus} style={{ marginRight: '9px' }} />
                     Ajouter un rapport
                 </button>
                 <button
-                    className={`px-4 py-2 rounded-md shadow-md ${affichage === 'modifier' ? 'bg-blue-500 text-white ' : 'bg-gray-200 hover:bg-gray-300 dark:bg-zinc-800 dark:text-white'} ml-4`}
+                    className={`flex items-center px-4 py-2 rounded-md shadow-md ${
+                        affichage === 'modifier'
+                            ? 'bg-blue-500 text-white'
+                            : 'bg-gray-200 hover:bg-gray-300 dark:bg-zinc-800 dark:text-white'
+                    } ml-4`}
                     onClick={() => setAffichage('modifier')}
                 >
+                    <FontAwesomeIcon icon={faEdit} style={{ marginRight: '9px' }} />
                     Modifier un rapport
                 </button>
             </div>
 
-            {/* Affichage pour Ajouter un rapport */}
+            {/* Affichage Ajouter un rapport */}
             {affichage === 'ajouter' && (
                 <div className="w-full max-w-md text-center">
                     <br />
@@ -117,41 +118,27 @@ export default function ListeRapports() {
                     {medecin && (
                         <div className="mt-6">
                             <h3 className="text-lg font-semibold mb-4 text-gray-800 dark:text-white">
+                                <FontAwesomeIcon icon={faUserDoctor} style={{ marginRight: '9px' }} />
                                 Médecin sélectionné : {medecin.nom} {medecin.prenom}
                             </h3>
-                            <AjouterRapport visiteur={visiteur} medecin={medecin} onRapportAjoute={() => console.log('Rapport ajouté')} />
+                            <AjouterRapport
+                                visiteur={visiteur}
+                                medecin={medecin}
+                                onRapportAjoute={() => console.log('Rapport ajouté')}
+                            />
                         </div>
                     )}
                 </div>
             )}
 
-            {/* Affichage pour Modifier un rapport */}
+            {/* Affichage Modifier un rapport */}
             {affichage === 'modifier' && (
                 <div className="w-full max-w-md text-center">
-                    <br />
-                    <div className="relative mb-4">
-                        <label className="block text-gray-700 dark:text-gray-300 mb-1">Sélectionnez une date</label>
-                        <input
-                            type="date"
-                            value={dateRecherche}
-                            onChange={handleDateChange}
-                            className="bg-zinc-100 dark:bg-zinc-700 w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        />
-                    </div>
-
-                    {rapport && (
-                        <div className="mt-6">
-                            <h3 className="text-lg font-semibold mb-4 text-gray-800 dark:text-white">Rapport du {dateRecherche}</h3>
-                            <p className="text-gray-600 dark:text-gray-300">
-                                <strong>Motif :</strong> {rapport.motif}
-                            </p>
-                            <p className="text-gray-600 dark:text-gray-300">
-                                <strong>Bilan :</strong> {rapport.bilan}
-                            </p>
-                            {/* formulaire après */}
-                        </div>
-                    )}
+                <br />
+                <div className="relative mb-4">
+                    <ModifierRapport visiteur={visiteur} />
                 </div>
+            </div>
             )}
         </div>
     );

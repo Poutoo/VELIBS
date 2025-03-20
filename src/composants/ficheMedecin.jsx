@@ -37,14 +37,14 @@ function Fiche({ leMedecin }) {
      * @returns Promesse Axios
      */
     async function sendUpdateMedecin(params) {
-        const apiUrl = `/restGSB/majMedecin`; // Utiliser l'URL fournie pour l'API
+        const apiUrl = `/majMedecin`; // Utiliser l'URL fournie pour l'API
         const config = {
             headers: {
                 'Content-Type': 'application/json'
             }
         };
         try {
-            const response = await api.put(apiUrl, params, config); // Utilisation de axios.put avec URL, données et config
+            const response = await api.put(apiUrl, params, config); 
             console.log('Réponse de l\'API :', response); // Log de la réponse de l'API
             return response;
         } catch (error) {
