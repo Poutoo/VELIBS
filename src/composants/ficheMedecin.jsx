@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useOutletContext } from 'react-router-dom';
 import api from '../api/api';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFloppyDisk } from '@fortawesome/free-solid-svg-icons';
 
 /**
  * @param {JSON} leMedecin
@@ -14,7 +16,7 @@ function Fiche({ leMedecin }) {
      * Fonction qui se déclenche lors de la soumission du formulaire.
      * Fait appel à l'API avec les données saisies pour MAJ le médecin
      * dans la base de données
-     * @param {*} e 
+     * @param {*} e der, propTypes
      */
     function updatemedecin(e) {
         e.preventDefault();
@@ -112,8 +114,9 @@ function Fiche({ leMedecin }) {
                 </div> 
                 
                 <button type="submit" 
-                    className="bg-rose-500 text-gray-100 px-4 py-2 rounded-md shadow-lg transform hover:scale-105 transition-transform duration-200" > 
-                    Enregistrer les modifications 
+                    className="bg-green-500 text-white px-4 py-2 rounded-md shadow-md hover:bg-green-600 transform hover:scale-105 transition-transform duration-200" > 
+                    <FontAwesomeIcon icon={faFloppyDisk} style={{ marginRight: '9px' }} />
+                    Enregistrer 
                 </button>
                 {updateMedecinSucces === true && (
                     <p className="mt-4 alert-success">Mise à jour réussie!</p>

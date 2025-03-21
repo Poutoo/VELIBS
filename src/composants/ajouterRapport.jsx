@@ -101,7 +101,7 @@ const AjouterRapport = ({ visiteur, medecin, onRapportAjoute }) => {
                         className="bg-zinc-100 dark:bg-zinc-700 w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                     ></textarea>
                 </div>
-                <button type="submit" className="bg-green-500 text-white px-4 py-2 rounded-md shadow-md hover:bg-green-600">
+                <button type="submit" className="bg-green-500 text-white px-4 py-2 rounded-md shadow-md hover:bg-green-600 transform hover:scale-105 transition-transform duration-200">
                     <FontAwesomeIcon icon={faFloppyDisk} style={{ marginRight: '9px' }} />
                     Enregistrer le rapport
                 </button>
