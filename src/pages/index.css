@@ -1,0 +1,41 @@
+/* index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Optionnel : personnalisation des couleurs pour le dark mode */
+@layer components {
+  .dark-mode {
+    --tw-bg-opacity: 1;
+    background-color: rgba(17, 24, 39, var(--tw-bg-opacity)); /* Exemple de personnalisation */
+  }
+}
+
+.text-success {
+  color: #33d37e; /* Vert */
+}
+
+.text-error {
+  color: #ec2727; /* Rouge */
+}
+
+.alert {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.alert-success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.alert-error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
