@@ -66,16 +66,6 @@ function Accueil() {
               {department}
             </button>
           ))}
-          <button
-            className={`px-4 py-2 rounded-lg border ${
-              selectedDepartment === ''
-                ? "bg-blue-500 text-white"
-                : "bg-gray-200 text-gray-700 hover:bg-blue-500 hover:text-white"
-            }`}
-            onClick={() => handleFilterChange('')}
-          >
-            Tous
-          </button>
         </div>
       </div>
 
@@ -83,36 +73,47 @@ function Accueil() {
       <div className="w-full bg-gray-50 p-6 shadow-md mb-4 text-center">
         <h2 className="text-xl font-semibold mb-4">Détails de la station sélectionnée</h2>
         {selectedStation ? (
-          
-          <div className="text-left">
+          <div className="text-center">
             <p><strong>Nom :</strong> {selectedStation.name}</p>
             <p><strong>Arrondissement/Commune :</strong> {selectedStation.nom_arrondissement_communes}</p>
             <p><strong>Vélos disponibles :</strong> {selectedStation.numbikesavailable}</p>
             <p><strong>Code Station :</strong> {selectedStation.stationcode}</p>
+            <p><strong>Ouvert :</strong> {selectedStation.is_open === "OUI" ? "Oui" : "Non"}</p>
           </div>
         ) : (
           <p>Sélectionnez une station pour voir ses détails.</p>
         )}
       </div>
 
-      {/* En bas : Liste des stations filtrées avec scroll */}
+      {/* En bas : Liste des stations sous forme de tableau */}
       <div className="w-full bg-white p-6 shadow-md text-center">
         <h2 className="text-xl font-semibold mb-4">Liste des stations</h2>
         {error ? (
           <p className="text-red-500">{error}</p>
         ) : filteredData.length > 0 ? (
-          <div className="overflow-y-auto h-80"> {/* Ajout du conteneur déroulant */}
-            <ul className="text-left">
-              {filteredData.map((station) => (
-                <li
-                  key={station.stationcode}
-                  className="mb-4 p-4 border-b cursor-pointer hover:bg-gray-200"
-                  onClick={() => handleStationClick(station)}
-                >
-                  <strong>{station.name}</strong> - {station.nom_arrondissement_communes}
-                </li>
-              ))}
-            </ul>
+          <div className="overflow-y-auto h-80 shadow-md sm:rounded-lg"> {/* Conteneur déroulant */}
+            <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+              <thead className='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
+                <tr className="bg-gray-200">
+                  <th scope="col" className="px-6 py-3">N°Station</th>
+                  <th scope="col" className="px-6 py-3">Nom</th>
+                  <th scope="col" className="px-6 py-3">Ouvert</th>
+                </tr>
+              </thead>
+              <tbody>
+                {filteredData.map((station) => (
+                  <tr
+                    key={station.stationcode}
+                    className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-100 cursor-pointer"
+                    onClick={() => handleStationClick(station)}
+                  >
+                    <td className="px-6 py-4">{station.stationcode}</td>
+                    <td className="px-6 py-4">{station.name}</td>
+                    <td className="px-6 py-4">{station.is_installed === "OUI" ? "Oui" : "Non"}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         ) : (
           <p>Aucune station trouvée pour le département sélectionné.</p>
